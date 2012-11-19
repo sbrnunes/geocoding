@@ -1,0 +1,17 @@
+
+
+Using Google's Maping API, 
+
+find the coordinates for each row in the attached file (use the address fields to do this).
+
+Create a sqlLite database to store the coordinates, address and other columns in the file, and those returned by Google.  
+
+By selecting data from the database you have created, calculate some outputs you find interesting, and output these to a file. 
+
+Also show how you'd calculate the sum of the total_sum_insured inside a rectangle (lat=53.819680 lon=6.723633, lat=47.923214 lon=14.809570). 
+
+You may assume the world is a flat Cartesian plane.   
+
+Before submitting the program, please ensure all necessary files are contained within a single zipped file. 
+
+Please pay special regard to unit testing and using interacting with the database. And please return your code to us by 9am on Monday.

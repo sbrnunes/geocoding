@@ -1,0 +1,8 @@
+Policy_number,Account,Address_1,Address_2,Region,Postcode_ZIP,     Country,Inception_date,Expiry_date,Risk_number,total_sum_insured,Flood_risk,Landslide_risk,Earthquake_risk,On_site_security,Fire_alarm,Intruder_detection_alarm
+1000000,Global Warehouse Company,Strandweg 7,,Horumersiel,26434,DE,22/05/1982,22/05/2022,1,75554110,NP,NP,1,Yes,Yes,Yes
+1000000,Global Warehouse Company,Slovenska 1b,Ostrava,,702 00,CZ,22/05/1982,22/05/2022,2,4921233,NP,2,NP,Yes,Yes,Yes
+1000000,Global Warehouse Company,Masarykova 118,Brno,,664 42,CZ,22/05/1982,22/05/2022,3,8986301,2,2,2,Yes,Yes,Yes
+1000001,Friends Inc,Kaakstr. 21,,Jever,26441,DE,22/05/1982,22/05/2022,1,7510274,4,5,3,Yes,Yes,Yes
+1000001,Friends Inc,Av. P.M.Curie, Nice  St Laurent du Var,"St Laurent du Var,France",6706,FR,22/05/1982,22/05/2022,2,13487646,5,3,3,No,Yes,Yes
+1000001,Friends Inc,Pumphusen 7,,Wittmund,26409,DE,22/05/1982,22/05/2022,3,6691077,2,NP,2,No,Yes,Yes
+1000001,Friends Inc,11 rue de Barcelone Decines Charpieu, Lyon,"DECINES CHARPIEU,France",69153,FR,22/05/1982,22/05/2022,4,22118654,NP,2,NP,No,Yes,Yes

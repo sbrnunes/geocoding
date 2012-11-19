@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean" >
+	</bean>
+	
+	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository" />
+	</bean>
+
+	<batch:job id="insertGeoDataIntoDbFromCsvJob">
+		<batch:step id="step1"  >			
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk 
+					reader="csvFileReader" 
+					processor="geographicalDataItemProcessor"
+					writer="jpaItemWriter" 
+					commit-interval="1" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job> 
+ 	
+ 	<bean id="csvFileReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+ 		<property name="resource" value="file:${csv.input.file}"/>
+ 		<property name="linesToSkip" value="1"/>
+ 		<property name="lineMapper">
+ 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+ 				<property name="lineTokenizer">
+ 					<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+ 						<property name="delimiter" value=","/>
+ 						<property name="names">
+ 							<value>policyNumber,account,address1,address2,region,postcodeZip,country,inceptionDate,expiryDate,riskNumber,totalSumInsured,floodRisk,landSlideRisk,earthquakeRisk,onSiteSecurity,fireAlarm,intruderDetectionAlarm</value>
+ 						</property>
+ 					</bean>
+ 				</property>
+ 				<property name="fieldSetMapper">
+ 					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+ 						<property name="targetType" value="mapflow.sample.app.batch.model.GeographicalData" />
+ 					</bean>
+ 				</property>
+ 			</bean>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean id="jpaItemWriter" class="org.springframework.batch.item.database.JpaItemWriter">
+ 		<property name="entityManagerFactory" ref="entityManagerFactory" />
+ 	</bean>
+ 	
+ 	<bean id="jdbcItemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+ 		<property name="assertUpdates" value="true"/>
+ 		<property name="dataSource" ref="dataSource"/>
+ 		<property name="itemSqlParameterSourceProvider">
+ 			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+ 		</property>
+ 		<property name="sql">
+ 			<value>
+ 				<![CDATA[
+ 					insert into GEOGRAPHICAL_DATA (
+ 						policyNumber,
+ 						account,
+ 						address1,
+ 						address2,
+ 						region,
+ 						postcodeZip,
+ 						country,
+ 						inceptionDate,
+ 						expiryDate,
+ 						riskNumber,
+ 						totalSumInsured,
+ 						floodRisk,
+ 						landSlideRisk,
+ 						earthquakeRisk,
+ 						onSiteSecurity,
+ 						fireAlarm,
+ 						intruderDetectionAlarm )
+ 					values (
+ 						:policyNumber,
+ 						:account,
+ 						:address1,
+ 						:address2,
+ 						:region,
+ 						:postcodeZip,
+ 						:country,
+ 						:inceptionDate,
+ 						:expiryDate,
+ 						:riskNumber,
+ 						:totalSumInsured,
+ 						:floodRisk,
+ 						:landSlideRisk,
+ 						:earthquakeRisk,
+ 						:onSiteSecurity,
+ 						:fireAlarm,
+ 						:intruderDetectionAlarm )
+ 				]]>
+ 			</value>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean id="geographicalDataItemProcessor" class="mapflow.sample.app.batch.processor.GeographicalDataItemProcessor" />
+ 	
+	
+
+</beans>
