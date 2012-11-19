@@ -48,8 +48,8 @@ public class GeographicalDataItemProcessor implements ItemProcessor<Geographical
 		
 		//Get the location and set the coordinates on the item.
 		Location location = output.getResults().get(0).getGeometry().getLocation();
-		item.setLatitude(location.getLat());
-		item.setLongitude(location.getLng());
+		item.setLatitude(Float.parseFloat(location.getLat()));
+		item.setLongitude(Float.parseFloat(location.getLng()));
 		
 		return item;
 		

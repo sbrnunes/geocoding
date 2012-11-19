@@ -29,7 +29,7 @@ public class GeographicalItemWriterTests  {
 		data = new ArrayList<GeographicalData>();
 		
 		GeographicalData item = new GeographicalData();
-		item.setPolicyNumber("1");
+		item.setPolicyNumber(123456789L);
 		
 		data.add( item );
 	}

@@ -1,39 +1,48 @@
 package mapflow.sample.app.batch.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="GEOGRAPHICAL_DATA")
 public class GeographicalData {
-	@Id
-	private String policyNumber;
+	@Id 
+	@GeneratedValue
+	private Long id;
+	private Long policyNumber;
 	private String account;
 	private String address1;
 	private String address2;
 	private String region;
 	private String postcodeZip;
 	private String country;
-	private String inceptionDate;
-	private String expiryDate;
-	private String riskNumber;
-	private String totalSumInsured;
+	private Date inceptionDate;
+	private Date expiryDate;
+	private Integer riskNumber;
+	private Integer totalSumInsured;
 	private String floodRisk;
 	private String landSlideRisk;
 	private String earthquakeRisk;
 	private String onSiteSecurity;
 	private String fireAlarm;
 	private String intruderDetectionAlarm;
-	private String latitude;
-	private String longitude;
+	
+	//Data from Google Maps API
+	private float latitude;
+	private float longitude;
 	
 	public GeographicalData() {}
 	
-	public String getPolicyNumber() {
+	public Long getPolicyNumber() {
 		return policyNumber;
 	}
-	public void setPolicyNumber(String policyNumber) {
+	public void setPolicyNumber(Long policyNumber) {
 		this.policyNumber = policyNumber;
 	}
 	public String getAccount() {
@@ -72,28 +81,28 @@ public class GeographicalData {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String getInceptionDate() {
+	public Date getInceptionDate() {
 		return inceptionDate;
 	}
-	public void setInceptionDate(String inceptionDate) {
+	public void setInceptionDate(Date inceptionDate) {
 		this.inceptionDate = inceptionDate;
 	}
-	public String getExpiryDate() {
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	public String getRiskNumber() {
+	public Integer getRiskNumber() {
 		return riskNumber;
 	}
-	public void setRiskNumber(String riskNumber) {
+	public void setRiskNumber(Integer riskNumber) {
 		this.riskNumber = riskNumber;
 	}
-	public String getTotalSumInsured() {
+	public Integer getTotalSumInsured() {
 		return totalSumInsured;
 	}
-	public void setTotalSumInsured(String totalSumInsured) {
+	public void setTotalSumInsured(Integer totalSumInsured) {
 		this.totalSumInsured = totalSumInsured;
 	}
 	public String getFloodRisk() {
@@ -133,19 +142,19 @@ public class GeographicalData {
 		this.intruderDetectionAlarm = intruderDetectionAlarm;
 	}
 
-	public String getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
-
-	public void setLatitude(String latitude) {
+	
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
-
-	public String getLongitude() {
+	
+	public float getLongitude() {
 		return longitude;
 	}
-
-	public void setLongitude(String longitude) {
+	
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 	
