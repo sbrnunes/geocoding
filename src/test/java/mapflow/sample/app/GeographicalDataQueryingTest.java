@@ -15,8 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={
-		"classpath:spring-application-context.xml",
-		"classpath:test-spring-persistence-context.xml"
+		"classpath:spring-test-application-context.xml"
 })
 public class GeographicalDataQueryingTest {
 

@@ -12,7 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring-application-context.xml"})
+@ContextConfiguration(locations={
+		"classpath:spring-test-application-context.xml"
+})
 public class GeographicalItemReaderTests extends TestCase {
 
 	@Autowired

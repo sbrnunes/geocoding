@@ -12,11 +12,15 @@ import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring-application-context.xml"})
+@ContextConfiguration(locations={
+		"classpath:spring-test-application-context.xml"
+})
 @Transactional(rollbackFor=Exception.class)
+@TransactionConfiguration(defaultRollback=true)
 public class GeographicalItemWriterTests  {
 
 	@Autowired
@@ -30,6 +34,7 @@ public class GeographicalItemWriterTests  {
 		
 		GeographicalData item = new GeographicalData();
 		item.setPolicyNumber(123456789L);
+		item.setTotalSumInsured(0);
 		
 		data.add( item );
 	}

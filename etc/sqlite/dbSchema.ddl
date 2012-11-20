@@ -1,5 +1,5 @@
 create table GEOGRAPHICAL_DATA (
-	id integer not null auto_increment,
+	id integer primary key,
 	policyNumber integer,
 	account varchar(50),
 	address1 varchar(50),
@@ -18,8 +18,7 @@ create table GEOGRAPHICAL_DATA (
 	fireAlarm varchar(5),
 	intruderDetectionAlarm varchar(5),
 	latitude float(10,6),
-	longitude float(10,6),
-	primary key (id)
+	longitude float(10,6)
 );
 
 CREATE UNIQUE INDEX UNIQUE_ADDRESS ON GEOGRAPHICAL_DATA (policyNumber, account, address1, address2, region, postcodeZip, country);

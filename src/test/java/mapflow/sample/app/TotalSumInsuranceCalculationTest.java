@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={
-		"classpath:spring-application-context.xml"
+		"classpath:spring-test-application-context.xml"
 })
 public class TotalSumInsuranceCalculationTest {
 
@@ -76,26 +76,4 @@ public class TotalSumInsuranceCalculationTest {
 		long totalSumInsured2 = service.getTotalSumInsured(policyNumber2, northwest, southeast);
 		Assert.assertEquals(14201351, totalSumInsured2);
 	}
-	
-	/**
-	 * Calculates the sum of total insurance for a specific point.
-	 * Checks if the calculated value is equal to the expected value.
-	 */
-	@Test
-	public void testCalculateSinglePointTotalSumInsurance() {
-		long totalSumInsured = service.getTotalSumInsured(singlePointCoords1, singlePointCoords1);
-		Assert.assertEquals(75554110, totalSumInsured);
-	}
-	
-	/**
-	 * Calculates the sum of total insurance for a specific point.
-	 * Checks if the calculated value is equal to the expected value.
-	 */
-	@Test
-	public void testCalculateSinglePoint2TotalSumInsurance() {
-		long totalSumInsured = service.getTotalSumInsured(singlePointCoords2, singlePointCoords2);
-		Assert.assertEquals(4921233, totalSumInsured);
-	}
-	
-	
 }
